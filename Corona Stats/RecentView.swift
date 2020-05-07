@@ -11,6 +11,8 @@ import SwiftUI
 struct RecentView: View {
     
     @ObservedObject var covidFetch = CovidFetchRequest()
+    @ObservedObject var test = CountryStatisticsFetchRequest()
+
     @State var searchText = ""
     @State var isSearchVisible = false
 
@@ -27,7 +29,10 @@ struct RecentView: View {
                         self.searchText.isEmpty ? true :
                             $0.countryName.lowercased().contains(self.searchText.lowercased())
                     }, id: \.countryName) { countryStats in
-                        CountryStatRowView(countryStats: countryStats)
+                        NavigationLink(destination: CountryDetailView(countryStats: countryStats)) {
+                            CountryStatRowView(countryStats: countryStats)
+                        }
+                        
                     }
                 }
             }// End of VStack

@@ -18,6 +18,12 @@ struct ContentView: View {
             }
             .tag(0)
             //map
+            MapContainerView()
+                .edgesIgnoringSafeArea(.vertical)
+            .tabItem {
+                Tab(imageName: "map", text: "Map")
+            }
+            .tag(1)
         }
     }
 }

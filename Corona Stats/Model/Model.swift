@@ -42,5 +42,29 @@ struct CountryStats {
     }
 }
 
+struct DetailedCountryStats {
+    let countryName: String
+
+    let confirmedCases: Int
+    let newCases: Int
+
+    let recoveryCases: Int
+    let criticalCases: Int
+    let activeCases: Int
+    
+    let deaths: Int
+    let newDeaths: Int
+    
+    let testDone: Int
+    
+    var fatalityRate: Double {
+        return (100.00 * Double(deaths)) / Double(confirmedCases)
+    }
+    
+    var recoveredRate: Double {
+        return (100.00 * Double(recoveryCases)) / Double(confirmedCases)
+    }
+}
+
 let testTotalStats = TotalStats(confirmed: 200, critical: 100, deaths: 20, recovered: 50)
 let testCountryStats = CountryStats(countryName: "Test", confirmed: 200, critical: 300, deaths: 200, recovered: 29, longitude: 20, latitude: 200)
