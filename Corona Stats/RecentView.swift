@@ -29,7 +29,7 @@ struct RecentView: View {
                         self.searchText.isEmpty ? true :
                             $0.countryName.lowercased().contains(self.searchText.lowercased())
                     }, id: \.countryName) { countryStats in
-                        NavigationLink(destination: CountryDetailView(countryStats: countryStats)) {
+                        NavigationLink(destination: CountryDetailView(countryName: countryStats.countryName)) {
                             CountryStatRowView(countryStats: countryStats)
                         }
                         
